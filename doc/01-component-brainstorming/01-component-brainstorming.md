@@ -1,8 +1,8 @@
 # Portfolio Part 1: Component Brainstorming
 
-- **Name**: <!-- TODO: fill with first and last name (e.g., Brutus Buckeye) then delete this comment -->
-- **Dot Number**: <!-- TODO: fill with OSU dot number (e.g., buckeye.17) then delete this comment -->
-- **Due Date**: <!-- TODO: fill with due date and time (e.g., 10/17 @ 3:10 PM EST) then delete this comment -->
+- **Name**: Nicky Doneski<!-- TODO: fill with first and last name (e.g., Brutus Buckeye) then delete this comment -->
+- **Dot Number**: doneski.3<!-- TODO: fill with OSU dot number (e.g., buckeye.17) then delete this comment -->
+- **Due Date**: 2/4/25<!-- TODO: fill with due date and time (e.g., 10/17 @ 3:10 PM EST) then delete this comment -->
 
 ## Assignment Overview
 
@@ -106,23 +106,17 @@ Below is further rationale/explanation for the rubric items above:
 > brainstorming. Plus it helps us get to know you better! Feel free to share
 > images in this section.
 
-<!-- TODO: briefly talk about your interests then delete this comment.
-Also, protip: you can preview what your response looks like by hitting
-the magnifying glass icon in the upper-right corner or pressing CTRL+K and
-then V. This kind of button combination is called a chord, for whatever
-reason -->
+I dont know what I want to do with my career, I know I like programming but I know that the job market is a shit show. And considering it looks like AI might take over the need to know how to program, I'm considering learning how to upkeep the AI systems, because thats the one job I can think of that can't be replace by AI.
+
+As for things I like to do, I like to play video games and I've recently gotten into anime. But who has time for hobbies when you're a college student.
 
 ## Assignment
-
-<!-- TODO: read the assignment section then delete this comment -->
 
 As previously stated, you are tasked with brainstorming 3 possible components.
 To aid you in this process, we have provided [some example components][example-components]
 that may help you in your brainstorming. All of these components were made at
 some point by one of your peers, so you should feel confident that you can
 accomplish any of them.
-
-<!-- TODO: browse the list of possible projects then delete this comment -->
 
 There is no requirement that you use any of the components listed above.
 If you want to model something else, go for it! Very common early object
@@ -200,68 +194,108 @@ will likely refine your design to make your implementation easier to use.
 
 > Please use this section to share your designs.
 
-- Component Design #1: <!-- TODO: give component a name then delete this comment -->
-  - **Description**:
-    - <!-- TODO: describe your component then delete this comment -->
+- Component Design #1: LogicGate
+  - **Description**: The LogicGate component represents a digital logic gate capable of performing basic logical operations such as AND, OR, NOT, XOR, etc. It processes one or more boolean inputs and produces a boolean output based on the type of gate.
   - **Kernel Methods**:
-    - <!-- TODO: list kernel methods then delete this comment -->
+    - `boolean evaluate(boolean... inputs)` - Processes the inputs based on the gate type and returns the boolean result.
+    - `void setGateType(GateType type)` - Defines the type of logic gate (e.g., AND, OR, NOT).
   - **Secondary Methods**:
-    - <!-- TODO: list secondary methods then delete this comment -->
-  - **Additional Considerations** (*note*: "I don't know" is an acceptable
-    answer for each of the following questions):
-    - Would this component be mutable? Answer and explain:
-      - <!-- TODO: provide an argument then delete this comment -->
-    - Would this component rely on any internal classes (e.g., `Map.Pair`)?
-      Answer and explain:
-      - <!-- TODO: provide an argument then delete this comment -->
-    - Would this component need any enums or constants (e.g.,
-      `Program.Instruction`)? Answer and explain:
-      - <!-- TODO: provide an argument then delete this comment -->
-    - Can you implement your secondary methods using your kernel methods?
-      Answer, explain, and give at least one example:
-      - <!-- TODO: provide an argument then delete this comment -->
+    - `String toString()` - Provides a string representation of the logic gate, including its type and current state.
+    - `boolean[] batchEvaluate(boolean[][] inputSets)` - Evaluates multiple sets of inputs and returns an array of results.
+    - `void toggleGateType()` - Switches between predefined gate types cyclically (useful for simulation purposes).
 
-- Component Design #2: <!-- TODO: give component a name then delete this comment -->
-  - **Description**:
-    - <!-- TODO: describe your component then delete this comment -->
-  - **Kernel Methods**:
-    - <!-- TODO: list kernel methods then delete this comment -->
-  - **Secondary Methods**:
-    - <!-- TODO: list secondary methods then delete this comment -->
   - **Additional Considerations** (*note*: "I don't know" is an acceptable
     answer for each of the following questions):
     - Would this component be mutable? Answer and explain:
-      - <!-- TODO: provide an argument then delete this comment -->
+      - Yes, the LogicGate component would be mutable because its gate type and potentially its internal state (if extended) can change after instantiation. This flexibility is essential for dynamic simulations where gates need to be reconfigured.
     - Would this component rely on any internal classes (e.g., `Map.Pair`)?
       Answer and explain:
-      - <!-- TODO: provide an argument then delete this comment -->
+      - Maybe. An internal helper class could be used for pairing inputs with their respective results in more complex logic circuits. For basic operations, reliance on internal classes is minimal.
     - Would this component need any enums or constants (e.g.,
       `Program.Instruction`)? Answer and explain:
-      - <!-- TODO: provide an argument then delete this comment -->
+      - Yes, an enum named GateType would be required to represent different types of gates like AND, OR, NOT, XOR, etc. This improves code readability and maintainability.
     - Can you implement your secondary methods using your kernel methods?
       Answer, explain, and give at least one example:
-      - <!-- TODO: provide an argument then delete this comment -->
+      - Yes. For example, the batchEvaluate method can be implemented using the evaluate kernel method:
+```Java
+public boolean[] batchEvaluate(boolean[][] inputSets) {
+    boolean[] results = new boolean[inputSets.length];
+    for (int i = 0; i < inputSets.length; i++) {
+        results[i] = evaluate(inputSets[i]);
+    }
+    return results;
+}
+```
+Here, batchEvaluate leverages the core evaluate method to process each set of inputs, demonstrating the reusability of kernel methods.
 
-- Component Design #3: <!-- TODO: give component a name then delete this comment -->
+- Component Design #2: Inventory
   - **Description**:
-    - <!-- TODO: describe your component then delete this comment -->
+    - The Inventory component represents a collection system for managing items within an application, such as a game or inventory management software. It supports adding, removing, and querying items.
   - **Kernel Methods**:
-    - <!-- TODO: list kernel methods then delete this comment -->
+    - `void add(Item item)` - Adds an item to the inventory.
+    - `void remove(Item item)` - Removes an item from the inventory.
+    - `boolean hasItem(Item item)` - Checks if a specific item is present in the inventory.
+    - `List<Item> getAllItems()` - Returns a list of all items currently in the inventory.
   - **Secondary Methods**:
-    - <!-- TODO: list secondary methods then delete this comment -->
+    - `int getItemCount(Item item)` - Returns the quantity of a specific item in the inventory.
+    - `void clearInventory()` - Removes all items from the inventory.
+    - `List<Item> filterItemsByType(ItemType type)` - Returns a list of items filtered by a specific type.
   - **Additional Considerations** (*note*: "I don't know" is an acceptable
     answer for each of the following questions):
     - Would this component be mutable? Answer and explain:
-      - <!-- TODO: provide an argument then delete this comment -->
+      - Yes, the Inventory component would be mutable because the collection of items can change over time as items are added or removed.
     - Would this component rely on any internal classes (e.g., `Map.Pair`)?
       Answer and explain:
-      - <!-- TODO: provide an argument then delete this comment -->
+      - Maybe. Internal data structures like Map<Item, Integer> might be used to manage item counts efficiently.
     - Would this component need any enums or constants (e.g.,
       `Program.Instruction`)? Answer and explain:
-      - <!-- TODO: provide an argument then delete this comment -->
+      - Yes, an enum named ItemType could be used to categorize items (e.g., WEAPON, ARMOR, CONSUMABLE), enhancing filtering and management.
     - Can you implement your secondary methods using your kernel methods?
       Answer, explain, and give at least one example:
-      - <!-- TODO: provide an argument then delete this comment -->
+      - Yes. For example, getItemCount can be implemented using hasItem and iterating through getAllItems:
+```Java
+public int getItemCount(Item item) {
+    int count = 0;
+    for (Item i : getAllItems()) {
+        if (i.equals(item)) {
+            count++;
+        }
+    }
+    return count;
+}
+```
+
+- Component Design #3: PlayableCharacter
+  - **Description**:
+    - The PlayableCharacter component represents a character that can be controlled by the user in an application, typically in a game environment. It includes attributes like health, abilities, and position.
+  - **Kernel Methods**:
+    - `void move(Direction direction)` - Moves the character in a specified direction.
+    - `void takeDamage(int amount)` - Reduces the character's health by a specified amount.
+    - `void heal(int amount)` - Increases the character's health by a specified amount.
+
+int getHealth() - Returns the current health of the character.
+  - **Secondary Methods**:
+    - `boolean isAlive()` - Checks if the character's health is above zero.
+    - `void respawn(Position position)` - Resets the character's position and restores health.
+    - `String getStatus()` - Provides a formatted string of the character's current status, including health and position.
+  - **Additional Considerations** (*note*: "I don't know" is an acceptable
+    answer for each of the following questions):
+    - Would this component be mutable? Answer and explain:
+      - Yes, the PlayableCharacter component is mutable because the character's health, position, and state change based on game interactions.
+    - Would this component rely on any internal classes (e.g., `Map.Pair`)?
+      Answer and explain:
+      - Maybe. Helper classes like Position or Stats may be used to encapsulate the character's location and attributes efficiently.
+    - Would this component need any enums or constants (e.g.,
+      `Program.Instruction`)? Answer and explain:
+      - Yes, enums like Direction for movement and CharacterClass for defining roles (e.g., WARRIOR, MAGE) could be helpful.
+    - Can you implement your secondary methods using your kernel methods?
+      Answer, explain, and give at least one example:
+      - Yes. For example, isAlive can be implemented using getHealth:
+```Java
+public boolean isAlive() {
+    return getHealth() > 0;
+}
+```
 
 ## Post-Assignment
 
@@ -270,7 +304,6 @@ completed the assignment.
 
 ### Changelog
 
-<!-- TODO: create CHANGELOG then delete this comment -->
 
 At the end of every assignment, you should update the
 [CHANGELOG.md](../../CHANGELOG.md) file found in the root of the project folder.
