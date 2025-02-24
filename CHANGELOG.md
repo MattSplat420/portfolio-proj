@@ -13,3 +13,13 @@ the following form: YYYY.0M.0D.
 - Designed a LogicGate component
 - Designed a Inventory component
 - Designed a PlayableCharacter component
+
+## 2025.02.24
+
+### Added
+
+- Designed a proof of concept for LogicGate component
+
+### Updated
+
+- Changed design to include Main method testing component.
